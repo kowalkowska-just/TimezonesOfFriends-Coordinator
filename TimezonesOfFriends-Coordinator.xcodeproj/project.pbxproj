@@ -39,6 +39,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D11CF07225CD6D2900AFA232 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D151ED9025CCBD58005624D1 /* Friend.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D11CF07425CD6D3F00AFA232 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D151ED7F25CCB524005624D1 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		D151ED6F25CCB524005624D1 = {
 			isa = PBXGroup;
 			children = (
@@ -60,12 +76,12 @@
 			children = (
 				D151ED7B25CCB524005624D1 /* AppDelegate.swift */,
 				D151ED7D25CCB524005624D1 /* SceneDelegate.swift */,
-				D151ED7F25CCB524005624D1 /* ViewController.swift */,
+				D11CF07225CD6D2900AFA232 /* Model */,
+				D11CF07425CD6D3F00AFA232 /* Controller */,
 				D151ED8125CCB524005624D1 /* Main.storyboard */,
 				D151ED8425CCB527005624D1 /* Assets.xcassets */,
 				D151ED8625CCB527005624D1 /* LaunchScreen.storyboard */,
 				D151ED8925CCB527005624D1 /* Info.plist */,
-				D151ED9025CCBD58005624D1 /* Friend.swift */,
 			);
 			path = "TimezonesOfFriends-Coordinator";
 			sourceTree = "<group>";
