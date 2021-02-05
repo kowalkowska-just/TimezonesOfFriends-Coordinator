@@ -17,8 +17,25 @@ class ViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupNavigationController()
         loadData()
+    }
+    
+    //MARK: - Helper Functions
+    
+    private func setupNavigationController() {
+        title = "Friend Zone"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addFriend))
+    }
+    
+    //MARK: - Selectors
+    
+    @objc private func addFriend() {
+        let friend = Friend()
+        friends.append(friend)
+        
+        tableView.insertRows(at: [IndexPath(row: friends.count - 1, section: 0)], with: .automatic)
+        saveData()
     }
     
     //MARK: - TableView Delegate and DataSource
