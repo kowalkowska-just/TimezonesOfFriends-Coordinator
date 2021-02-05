@@ -18,6 +18,7 @@ class ViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loadData()
     }
     
     //MARK: - TableView Delegate and DataSource
@@ -32,6 +33,31 @@ class ViewController: UITableViewController {
         cell.textLabel?.text = friend.name
         cell.detailTextLabel?.text = friend.timeZone.identifier
         return cell
+    }
+    
+    //MARK: - Load Data
+    
+    func loadData() {
+        let defaults = UserDefaults.standard
+        guard let savedData = defaults.data(forKey: "Friends") else { return }
+        
+        let decoder = JSONDecoder()
+        guard let savedFriends = try? decoder.decode([Friend].self, from: savedData) else { return }
+        
+        friends = savedFriends
+    }
+    
+    //MARK: - Save Data
+    
+    func saveData() {
+        let defaults = UserDefaults.standard
+        let encoder = JSONEncoder()
+        
+        guard let savedData = try? encoder.encode(friends) else {
+            fatalError("Unable to encode friends data")
+        }
+        
+        defaults.setValue(savedData, forKey: "Friends")
     }
 }
 
