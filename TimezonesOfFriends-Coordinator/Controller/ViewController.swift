@@ -11,9 +11,9 @@ class ViewController: UITableViewController {
 
     //MARK: - Properties
     
-    var friends = [Friend]()
+    private var friends = [Friend]()
     
-    //MARK: - Life Cycle
+    //MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +36,8 @@ class ViewController: UITableViewController {
         
         tableView.insertRows(at: [IndexPath(row: friends.count - 1, section: 0)], with: .automatic)
         saveData()
+        
+        configure(friend: friend, pasition: friends.count - 1)
     }
     
     //MARK: - TableView Delegate and DataSource
@@ -52,9 +54,12 @@ class ViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        configure(friend: friends[indexPath.row], pasition: indexPath.row)
+    }
     //MARK: - Load Data
     
-    func loadData() {
+    private func loadData() {
         let defaults = UserDefaults.standard
         guard let savedData = defaults.data(forKey: "Friends") else { return }
         
@@ -66,7 +71,7 @@ class ViewController: UITableViewController {
     
     //MARK: - Save Data
     
-    func saveData() {
+    private func saveData() {
         let defaults = UserDefaults.standard
         let encoder = JSONEncoder()
         
@@ -75,6 +80,16 @@ class ViewController: UITableViewController {
         }
         
         defaults.setValue(savedData, forKey: "Friends")
+    }
+    
+    //MARK: - Configure FriendViewController
+    
+    private func configure(friend: Friend, pasition: Int) {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "FriendViewController") as? FriendViewController else { fatalError("Unable to create FrienViewController.") }
+        
+        vc.delegate = self
+        vc.friend = friend
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
