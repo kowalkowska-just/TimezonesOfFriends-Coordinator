@@ -15,7 +15,12 @@ class FriendViewController: UITableViewController {
     var friend: Friend!
     
     var timeZones = [TimeZone]()
-    var selectedtimeZone = 0
+    var selectedTimeZone = 0
+    
+    var nameEditingCell: TextTableViewCell? {
+        let indexPath = IndexPath(row: 0, section: 0)
+        return tableView.cellForRow(at: indexPath) as? TextTableViewCell
+    }
     
     //MARK: - Lifecycle
     
@@ -43,7 +48,7 @@ class FriendViewController: UITableViewController {
             }
         }
         
-        selectedtimeZone = timeZones.index(of: friend.timeZone) ?? 0
+        selectedTimeZone = timeZones.index(of: friend.timeZone) ?? 0
     }
     
     @IBAction func nameChanged(_ sender: UITextField) {
@@ -89,7 +94,7 @@ class FriendViewController: UITableViewController {
             let timeDifference = timeZone.secondsFromGMT(for: Date())
             cell.detailTextLabel?.text = String(timeDifference)
             
-            if indexPath.row == selectedtimeZone {
+            if indexPath.row == selectedTimeZone {
                 cell.accessoryType = .checkmark
             } else {
                 cell.accessoryType = .none
@@ -97,5 +102,35 @@ class FriendViewController: UITableViewController {
             
             return cell
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            startEditingName()
+        } else {
+            selectRow(at: indexPath)
+        }
+    }
+    
+    //MARK: - Helper Functions
+    
+    private func startEditingName() {
+        nameEditingCell?.textField.becomeFirstResponder()
+    }
+    
+    private func selectRow(at indexPath: IndexPath) {
+        nameEditingCell?.textField.resignFirstResponder()
+        
+        for cell in tableView.visibleCells {
+            cell.accessoryType = .none
+        }
+        
+        selectedTimeZone = indexPath.row
+        friend.timeZone = timeZones[indexPath.row]
+        
+        let selected = tableView.cellForRow(at: indexPath)
+        selected?.accessoryType = .checkmark
+        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
