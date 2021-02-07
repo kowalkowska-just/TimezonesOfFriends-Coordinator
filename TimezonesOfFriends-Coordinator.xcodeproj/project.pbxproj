@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D11CF07825CD766800AFA232 /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11CF07725CD766800AFA232 /* FriendViewController.swift */; };
 		D11CF07B25CD7C5500AFA232 /* TextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11CF07A25CD7C5500AFA232 /* TextTableViewCell.swift */; };
+		D11CF08625D0A14900AFA232 /* Int-TimeFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11CF08525D0A14900AFA232 /* Int-TimeFormatting.swift */; };
 		D151ED7C25CCB524005624D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D151ED7B25CCB524005624D1 /* AppDelegate.swift */; };
 		D151ED7E25CCB524005624D1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D151ED7D25CCB524005624D1 /* SceneDelegate.swift */; };
 		D151ED8025CCB524005624D1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D151ED7F25CCB524005624D1 /* ViewController.swift */; };
@@ -21,6 +22,7 @@
 /* Begin PBXFileReference section */
 		D11CF07725CD766800AFA232 /* FriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
 		D11CF07A25CD7C5500AFA232 /* TextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTableViewCell.swift; sourceTree = "<group>"; };
+		D11CF08525D0A14900AFA232 /* Int-TimeFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int-TimeFormatting.swift"; sourceTree = "<group>"; };
 		D151ED7825CCB524005624D1 /* TimezonesOfFriends-Coordinator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TimezonesOfFriends-Coordinator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D151ED7B25CCB524005624D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D151ED7D25CCB524005624D1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +70,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		D11CF08825D0A14E00AFA232 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D11CF08525D0A14900AFA232 /* Int-TimeFormatting.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		D151ED6F25CCB524005624D1 = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +106,7 @@
 				D151ED8425CCB527005624D1 /* Assets.xcassets */,
 				D151ED8625CCB527005624D1 /* LaunchScreen.storyboard */,
 				D151ED8925CCB527005624D1 /* Info.plist */,
+				D11CF08825D0A14E00AFA232 /* Extension */,
 			);
 			path = "TimezonesOfFriends-Coordinator";
 			sourceTree = "<group>";
@@ -176,6 +187,7 @@
 				D151ED7E25CCB524005624D1 /* SceneDelegate.swift in Sources */,
 				D151ED9125CCBD58005624D1 /* Friend.swift in Sources */,
 				D11CF07825CD766800AFA232 /* FriendViewController.swift in Sources */,
+				D11CF08625D0A14900AFA232 /* Int-TimeFormatting.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -89,10 +89,10 @@ class FriendViewController: UITableViewController {
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "timeZone", for: indexPath)
             let timeZone = timeZones[indexPath.row]
-            cell.textLabel?.text = timeZone.identifier
+            cell.textLabel?.text = timeZone.identifier.replacingOccurrences(of: "_", with: " ")
             
             let timeDifference = timeZone.secondsFromGMT(for: Date())
-            cell.detailTextLabel?.text = String(timeDifference)
+            cell.detailTextLabel?.text = timeDifference.timeString()
             
             if indexPath.row == selectedTimeZone {
                 cell.accessoryType = .checkmark
