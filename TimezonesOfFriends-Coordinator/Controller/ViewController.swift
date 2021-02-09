@@ -12,6 +12,7 @@ class ViewController: UITableViewController {
     //MARK: - Properties
     
     private var friends = [Friend]()
+    var selectedFriend: Int? = nil
     
     //MARK: - Lifecycle
     
@@ -37,7 +38,7 @@ class ViewController: UITableViewController {
         tableView.insertRows(at: [IndexPath(row: friends.count - 1, section: 0)], with: .automatic)
         saveData()
         
-        configure(friend: friend, pasition: friends.count - 1)
+        configure(friend: friend, position: friends.count - 1)
     }
     
     //MARK: - TableView Delegate and DataSource
@@ -50,12 +51,17 @@ class ViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let friend = friends[indexPath.row]
         cell.textLabel?.text = friend.name
-        cell.detailTextLabel?.text = friend.timeZone.identifier
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = friend.timeZone
+        dateFormatter.timeStyle = .short
+        
+        cell.detailTextLabel?.text = dateFormatter.string(from: Date())
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        configure(friend: friends[indexPath.row], pasition: indexPath.row)
+        configure(friend: friends[indexPath.row], position: indexPath.row)
     }
     //MARK: - Load Data
     
@@ -84,12 +90,20 @@ class ViewController: UITableViewController {
     
     //MARK: - Configure FriendViewController
     
-    private func configure(friend: Friend, pasition: Int) {
+    private func configure(friend: Friend, position: Int) {
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "FriendViewController") as? FriendViewController else { fatalError("Unable to create FrienViewController.") }
         
+        selectedFriend = position
         vc.delegate = self
         vc.friend = friend
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func update(friend: Friend) {
+        guard let selectedFriend = selectedFriend else { return }
+        friends[selectedFriend] = friend
+        tableView.reloadData()
+        saveData()
     }
 }
 

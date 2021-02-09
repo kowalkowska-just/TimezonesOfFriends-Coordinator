@@ -27,6 +27,8 @@ class FriendViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.register(TextTableViewCell.self, forCellReuseIdentifier: "Name")
+        
         let identifiers = TimeZone.knownTimeZoneIdentifiers
         
         for identifier in identifiers {
@@ -51,8 +53,9 @@ class FriendViewController: UITableViewController {
         selectedTimeZone = timeZones.index(of: friend.timeZone) ?? 0
     }
     
-    @IBAction func nameChanged(_ sender: UITextField) {
-        
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        delegate?.update(friend: friend)
     }
     
     //MARK: - TableView Delegate and DataSource
@@ -109,6 +112,7 @@ class FriendViewController: UITableViewController {
             startEditingName()
         } else {
             selectRow(at: indexPath)
+            friend.name = nameEditingCell?.textField.text ?? ""
         }
     }
     
