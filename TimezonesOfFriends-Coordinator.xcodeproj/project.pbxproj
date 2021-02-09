@@ -10,6 +10,7 @@
 		D11CF07825CD766800AFA232 /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11CF07725CD766800AFA232 /* FriendViewController.swift */; };
 		D11CF07B25CD7C5500AFA232 /* TextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11CF07A25CD7C5500AFA232 /* TextTableViewCell.swift */; };
 		D11CF08625D0A14900AFA232 /* Int-TimeFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11CF08525D0A14900AFA232 /* Int-TimeFormatting.swift */; };
+		D1428A2E25D2FE25006B4BCD /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1428A2D25D2FE25006B4BCD /* Coordinator.swift */; };
 		D151ED7C25CCB524005624D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D151ED7B25CCB524005624D1 /* AppDelegate.swift */; };
 		D151ED7E25CCB524005624D1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D151ED7D25CCB524005624D1 /* SceneDelegate.swift */; };
 		D151ED8025CCB524005624D1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D151ED7F25CCB524005624D1 /* ViewController.swift */; };
@@ -23,6 +24,7 @@
 		D11CF07725CD766800AFA232 /* FriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
 		D11CF07A25CD7C5500AFA232 /* TextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTableViewCell.swift; sourceTree = "<group>"; };
 		D11CF08525D0A14900AFA232 /* Int-TimeFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int-TimeFormatting.swift"; sourceTree = "<group>"; };
+		D1428A2D25D2FE25006B4BCD /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		D151ED7825CCB524005624D1 /* TimezonesOfFriends-Coordinator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TimezonesOfFriends-Coordinator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D151ED7B25CCB524005624D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D151ED7D25CCB524005624D1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +80,14 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		D1428A3125D2FE30006B4BCD /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				D1428A2D25D2FE25006B4BCD /* Coordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		D151ED6F25CCB524005624D1 = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +112,7 @@
 				D11CF07225CD6D2900AFA232 /* Model */,
 				D11CF07E25CD7C6700AFA232 /* View */,
 				D11CF07425CD6D3F00AFA232 /* Controller */,
+				D1428A3125D2FE30006B4BCD /* Coordinator */,
 				D11CF08825D0A14E00AFA232 /* Extension */,
 				D151ED8125CCB524005624D1 /* Main.storyboard */,
 				D151ED8425CCB527005624D1 /* Assets.xcassets */,
@@ -181,6 +192,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1428A2E25D2FE25006B4BCD /* Coordinator.swift in Sources */,
 				D11CF07B25CD7C5500AFA232 /* TextTableViewCell.swift in Sources */,
 				D151ED8025CCB524005624D1 /* ViewController.swift in Sources */,
 				D151ED7C25CCB524005624D1 /* AppDelegate.swift in Sources */,

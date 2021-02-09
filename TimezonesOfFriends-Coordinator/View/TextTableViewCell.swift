@@ -17,6 +17,8 @@ class TextTableViewCell: UITableViewCell {
         tf.placeholder = "Justyna Kowalkowska"
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.clearButtonMode = .whileEditing
+        tf.autocorrectionType = .no
+        tf.keyboardAppearance = .dark
         return tf
     }()
     
