@@ -13,7 +13,6 @@ class FriendViewController: UITableViewController, Storyboarded {
     
     weak var coordinator: MainCoordinator?
     
-    weak var delegate: ViewController?
     var friend: Friend!
     
     var timeZones = [TimeZone]()
@@ -57,7 +56,7 @@ class FriendViewController: UITableViewController, Storyboarded {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        delegate?.update(friend: friend)
+        coordinator?.update(friend: friend)
     }
     
     //MARK: - TableView Delegate and DataSource
