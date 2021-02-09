@@ -114,6 +114,7 @@ class FriendViewController: UITableViewController, Storyboarded {
             startEditingName()
         } else {
             selectRow(at: indexPath)
+            friend.name = nameEditingCell?.textField.text ?? ""
         }
     }
     

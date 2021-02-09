@@ -66,6 +66,30 @@ class ViewController: UITableViewController, Storyboarded {
         selectedFriend = indexPath.row
         coordinator?.configure(friend: friends[indexPath.row])
     }
+    
+    // MARK: - Swipe to delete UITableViewCells
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let delete = deleteAction(at: indexPath)
+        return UISwipeActionsConfiguration(actions: [delete])
+    }
+    
+    func deleteAction(at indexPath: IndexPath) -> UIContextualAction {
+        let action = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completion) in
+            self.updateModel(at: indexPath)
+        }
+        action.image = UIImage(systemName: "trash")
+        action.backgroundColor = .red
+        return action
+    }
+    
+    func updateModel(at indexPath: IndexPath) {
+        friends.remove(at: indexPath.row)
+        tableView.reloadData()
+        saveData()
+    }
+    
     //MARK: - Load Data
     
     private func loadData() {
