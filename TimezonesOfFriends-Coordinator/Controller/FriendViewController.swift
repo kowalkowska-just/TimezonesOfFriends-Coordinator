@@ -56,6 +56,7 @@ class FriendViewController: UITableViewController, Storyboarded {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        friend.name = nameEditingCell?.textField.text ?? ""
         coordinator?.update(friend: friend)
     }
     
@@ -113,7 +114,6 @@ class FriendViewController: UITableViewController, Storyboarded {
             startEditingName()
         } else {
             selectRow(at: indexPath)
-            friend.name = nameEditingCell?.textField.text ?? ""
         }
     }
     
