@@ -7,9 +7,11 @@
 
 import UIKit
 
-class FriendViewController: UITableViewController {
+class FriendViewController: UITableViewController, Storyboarded {
 
     //MARK: - Properties
+    
+    weak var coordinator: MainCoordinator?
     
     weak var delegate: ViewController?
     var friend: Friend!
