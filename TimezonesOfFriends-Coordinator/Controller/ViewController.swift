@@ -29,6 +29,8 @@ class ViewController: UITableViewController, Storyboarded {
     private func setupNavigationController() {
         title = "Friend Zone"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addFriend))
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
     }
     
     //MARK: - Selectors

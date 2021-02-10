@@ -7,9 +7,15 @@
 
 import UIKit
 
-class FriendViewController: UITableViewController, Storyboarded {
+protocol FriendViewControllerDelegate: AnyObject {
+    func tappedSaveButton()
+}
+
+class FriendViewController: UIViewController, Storyboarded {
 
     //MARK: - Properties
+    
+    @IBOutlet weak var tableView: UITableView!
     
     weak var coordinator: MainCoordinator?
     
@@ -28,7 +34,24 @@ class FriendViewController: UITableViewController, Storyboarded {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupTableView()
+        
+        navigationController?.isNavigationBarHidden = true
+
+        sortTimeZone()
+    }
+    
+    //MARK: - Helper Functions
+    
+    private func setupTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        
         tableView.register(TextTableViewCell.self, forCellReuseIdentifier: "Name")
+        tableView.rowHeight = 60
+    }
+    
+    private func sortTimeZone() {
         
         let identifiers = TimeZone.knownTimeZoneIdentifiers
         
@@ -54,19 +77,36 @@ class FriendViewController: UITableViewController, Storyboarded {
         selectedTimeZone = timeZones.index(of: friend.timeZone) ?? 0
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        friend.name = nameEditingCell?.textField.text ?? ""
-        coordinator?.update(friend: friend)
+    private func startEditingName() {
+        nameEditingCell?.textField.becomeFirstResponder()
     }
     
-    //MARK: - TableView Delegate and DataSource
+    private func selectRow(at indexPath: IndexPath) {
+        nameEditingCell?.textField.resignFirstResponder()
+        
+        for cell in tableView.visibleCells {
+            cell.accessoryType = .none
+        }
+        
+        selectedTimeZone = indexPath.row
+        friend.timeZone = timeZones[indexPath.row]
+        
+        let selected = tableView.cellForRow(at: indexPath)
+        selected?.accessoryType = .checkmark
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+// MARK: - UITableView Delegate and DataSource
+
+extension FriendViewController: UITableViewDelegate, UITableViewDataSource {
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 1
         } else {
@@ -74,7 +114,7 @@ class FriendViewController: UITableViewController, Storyboarded {
         }
     }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
             return "Name your friend"
         } else {
@@ -82,7 +122,11 @@ class FriendViewController: UITableViewController, Storyboarded {
         }
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 25
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "Name", for: indexPath) as? TextTableViewCell
             else {
@@ -109,7 +153,7 @@ class FriendViewController: UITableViewController, Storyboarded {
         }
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             startEditingName()
         } else {
@@ -117,26 +161,17 @@ class FriendViewController: UITableViewController, Storyboarded {
             friend.name = nameEditingCell?.textField.text ?? ""
         }
     }
-    
-    //MARK: - Helper Functions
-    
-    private func startEditingName() {
-        nameEditingCell?.textField.becomeFirstResponder()
-    }
-    
-    private func selectRow(at indexPath: IndexPath) {
-        nameEditingCell?.textField.resignFirstResponder()
-        
-        for cell in tableView.visibleCells {
-            cell.accessoryType = .none
+}
+
+//MARK: - FriendViewControllerDelegate
+
+extension FriendViewController: FriendViewControllerDelegate {
+    func tappedSaveButton() {
+        if nameEditingCell?.textField.text == "" {
+            print("DEBUG: Name is empty, please enter name! (Place for alert).")
+        } else {
+            friend.name = nameEditingCell?.textField.text ?? ""
+            coordinator?.update(friend: friend)
         }
-        
-        selectedTimeZone = indexPath.row
-        friend.timeZone = timeZones[indexPath.row]
-        
-        let selected = tableView.cellForRow(at: indexPath)
-        selected?.accessoryType = .checkmark
-        
-        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
