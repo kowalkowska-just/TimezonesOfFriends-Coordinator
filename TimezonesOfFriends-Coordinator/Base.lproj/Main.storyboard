@@ -61,11 +61,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3J0-y9-5zg">
-                                <rect key="frame" x="15" y="49" width="384" height="65"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="65" id="ddf-Wi-NcT"/>
-                                </constraints>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3J0-y9-5zg">
+                                <rect key="frame" x="15" y="49" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="q7A-As-4LO">
@@ -110,19 +108,15 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="izS-Ib-JkG"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="3J0-y9-5zg" firstAttribute="top" secondItem="izS-Ib-JkG" secondAttribute="top" constant="5" id="4kD-yD-cgV"/>
-                            <constraint firstItem="izS-Ib-JkG" firstAttribute="trailing" secondItem="3J0-y9-5zg" secondAttribute="trailing" constant="15" id="Ozi-IC-yJn"/>
-                            <constraint firstItem="3J0-y9-5zg" firstAttribute="leading" secondItem="izS-Ib-JkG" secondAttribute="leading" constant="15" id="wGb-ll-61V"/>
-                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="saveButton" destination="3J0-y9-5zg" id="59h-jh-1r1"/>
                         <outlet property="tableView" destination="q7A-As-4LO" id="ee8-wM-bQ3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q7m-XB-wb5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2350.7246376811595" y="103.79464285714285"/>
+            <point key="canvasLocation" x="1791" y="104"/>
         </scene>
     </scenes>
     <resources>

@@ -7,14 +7,11 @@
 
 import UIKit
 
-protocol FriendViewControllerDelegate: AnyObject {
-    func tappedSaveButton()
-}
-
 class FriendViewController: UIViewController, Storyboarded {
 
     //MARK: - Properties
     
+    @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
     weak var coordinator: MainCoordinator?
@@ -33,7 +30,7 @@ class FriendViewController: UIViewController, Storyboarded {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupSaveButton()
         setupTableView()
         
         navigationController?.isNavigationBarHidden = true
@@ -49,6 +46,20 @@ class FriendViewController: UIViewController, Storyboarded {
         
         tableView.register(TextTableViewCell.self, forCellReuseIdentifier: "Name")
         tableView.rowHeight = 60
+        
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.anchor(top: saveButton.bottomAnchor, left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingTop: 15, paddingLeft: 5, paddingRight: 5)
+    }
+    
+    private func setupSaveButton() {
+        saveButton.translatesAutoresizingMaskIntoConstraints = false
+        saveButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 5, paddingLeft: 15, paddingRight: 15, height: 55)
+        
+        saveButton.setTitle("Save", for: .normal)
+        saveButton.tintColor = .white
+        saveButton.backgroundColor = .systemBlue
+        saveButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        saveButton.layer.cornerRadius = 25
     }
     
     private func sortTimeZone() {
@@ -159,19 +170,6 @@ extension FriendViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             selectRow(at: indexPath)
             friend.name = nameEditingCell?.textField.text ?? ""
-        }
-    }
-}
-
-//MARK: - FriendViewControllerDelegate
-
-extension FriendViewController: FriendViewControllerDelegate {
-    func tappedSaveButton() {
-        if nameEditingCell?.textField.text == "" {
-            print("DEBUG: Name is empty, please enter name! (Place for alert).")
-        } else {
-            friend.name = nameEditingCell?.textField.text ?? ""
-            coordinator?.update(friend: friend)
         }
     }
 }
