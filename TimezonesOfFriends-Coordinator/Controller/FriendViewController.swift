@@ -42,12 +42,13 @@ class FriendViewController: UIViewController, Storyboarded {
         guard let name = nameEditingCell?.textField.text else { return }
         if name == "" {
             print("DEBUG: Name is empty, please enter name! (Place for alert).")
+            createAlert(with: "Opss! Name is missing", message: "Please enter your friend's name above")
+            nameEditingCell?.backgroundColor = .red
         } else {
             friend.name = name
             coordinator?.update(friend: friend)
         }
     }
-    
     
     //MARK: - Helper Functions
     
@@ -70,7 +71,7 @@ class FriendViewController: UIViewController, Storyboarded {
         saveButton.tintColor = .white
         saveButton.backgroundColor = .systemBlue
         saveButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        saveButton.layer.cornerRadius = 25
+        saveButton.layer.cornerRadius = 27.5
     }
     
     private func sortTimeZone() {
@@ -96,7 +97,7 @@ class FriendViewController: UIViewController, Storyboarded {
             }
         }
         
-        selectedTimeZone = timeZones.index(of: friend.timeZone) ?? 0
+        selectedTimeZone = timeZones.firstIndex(of: friend.timeZone) ?? 0
     }
     
     private func startEditingName() {
@@ -180,7 +181,8 @@ extension FriendViewController: UITableViewDelegate, UITableViewDataSource {
             startEditingName()
         } else {
             selectRow(at: indexPath)
-            friend.name = nameEditingCell?.textField.text ?? ""
+            guard let name = nameEditingCell?.textField.text else { return }
+            friend.name = name
         }
     }
 }
