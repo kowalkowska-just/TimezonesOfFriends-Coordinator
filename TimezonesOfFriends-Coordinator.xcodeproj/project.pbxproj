@@ -22,6 +22,7 @@
 		D151ED8825CCB527005624D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D151ED8625CCB527005624D1 /* LaunchScreen.storyboard */; };
 		D151ED9125CCBD58005624D1 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = D151ED9025CCBD58005624D1 /* Friend.swift */; };
 		D1525B8725D524310062FBB7 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1525B8625D524310062FBB7 /* Alert.swift */; };
+		D1525B8A25D52AB50062FBB7 /* ColorRGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1525B8925D52AB50062FBB7 /* ColorRGB.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		D151ED8925CCB527005624D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D151ED9025CCBD58005624D1 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		D1525B8625D524310062FBB7 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		D1525B8925D52AB50062FBB7 /* ColorRGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorRGB.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 				D1428A3725D2FFDC006B4BCD /* Storyboarded.swift */,
 				D1428A4325D49B7A006B4BCD /* Constraints.swift */,
 				D1525B8625D524310062FBB7 /* Alert.swift */,
+				D1525B8925D52AB50062FBB7 /* ColorRGB.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 				D1428A2E25D2FE25006B4BCD /* Coordinator.swift in Sources */,
 				D11CF07B25CD7C5500AFA232 /* TextTableViewCell.swift in Sources */,
 				D151ED8025CCB524005624D1 /* ViewController.swift in Sources */,
+				D1525B8A25D52AB50062FBB7 /* ColorRGB.swift in Sources */,
 				D151ED7C25CCB524005624D1 /* AppDelegate.swift in Sources */,
 				D1428A4425D49B7A006B4BCD /* Constraints.swift in Sources */,
 				D151ED7E25CCB524005624D1 /* SceneDelegate.swift in Sources */,

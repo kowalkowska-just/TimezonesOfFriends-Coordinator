@@ -43,7 +43,7 @@ class FriendViewController: UIViewController, Storyboarded {
         if name == "" {
             print("DEBUG: Name is empty, please enter name! (Place for alert).")
             createAlert(with: "Opss! Name is missing", message: "Please enter your friend's name above")
-            nameEditingCell?.backgroundColor = .red
+            nameEditingCell?.backgroundColor = .lightRedColor
         } else {
             friend.name = name
             coordinator?.update(friend: friend)
