@@ -38,6 +38,17 @@ class FriendViewController: UIViewController, Storyboarded {
         sortTimeZone()
     }
     
+    @IBAction func saveButtonTapped(_ sender: UIButton) {
+        guard let name = nameEditingCell?.textField.text else { return }
+        if name == "" {
+            print("DEBUG: Name is empty, please enter name! (Place for alert).")
+        } else {
+            friend.name = name
+            coordinator?.update(friend: friend)
+        }
+    }
+    
+    
     //MARK: - Helper Functions
     
     private func setupTableView() {

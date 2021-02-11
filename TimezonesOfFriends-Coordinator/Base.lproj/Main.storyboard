@@ -65,6 +65,9 @@
                                 <rect key="frame" x="15" y="49" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="saveButtonTapped:" destination="vGn-k6-0Fk" eventType="touchUpInside" id="ZcQ-dU-Nx8"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="q7A-As-4LO">
                                 <rect key="frame" x="0.0" y="157" width="414" height="705"/>

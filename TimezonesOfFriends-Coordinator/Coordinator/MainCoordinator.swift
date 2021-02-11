@@ -33,6 +33,8 @@ class MainCoordinator: Coordinator {
     func update(friend: Friend) {
         guard let vc = navigationController.viewControllers.first as? ViewController else { return }
         vc.update(friend: friend)
+        navigationController.popToViewController(vc, animated: true)
+
     }
 
 }
