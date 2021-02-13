@@ -26,3 +26,14 @@ extension Int {
         }
     }
 }
+
+extension ViewController {
+    
+    func timeNumeric(from date: Friend) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = date.timeZone
+        dateFormatter.timeStyle = .short
+        
+        return dateFormatter.string(from: Date())
+    }
+}
