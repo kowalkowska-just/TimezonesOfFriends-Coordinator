@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		D11CF07825CD766800AFA232 /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11CF07725CD766800AFA232 /* FriendViewController.swift */; };
 		D11CF07B25CD7C5500AFA232 /* TextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11CF07A25CD7C5500AFA232 /* TextTableViewCell.swift */; };
-		D11CF08625D0A14900AFA232 /* Int-TimeFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11CF08525D0A14900AFA232 /* Int-TimeFormatting.swift */; };
+		D11CF08625D0A14900AFA232 /* Int-TimeFormatting-String-Numeric.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11CF08525D0A14900AFA232 /* Int-TimeFormatting-String-Numeric.swift */; };
 		D1428A2E25D2FE25006B4BCD /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1428A2D25D2FE25006B4BCD /* Coordinator.swift */; };
 		D1428A3425D2FED8006B4BCD /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1428A3325D2FED8006B4BCD /* MainCoordinator.swift */; };
 		D1428A3825D2FFDC006B4BCD /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1428A3725D2FFDC006B4BCD /* Storyboarded.swift */; };
@@ -28,7 +28,7 @@
 /* Begin PBXFileReference section */
 		D11CF07725CD766800AFA232 /* FriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
 		D11CF07A25CD7C5500AFA232 /* TextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTableViewCell.swift; sourceTree = "<group>"; };
-		D11CF08525D0A14900AFA232 /* Int-TimeFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int-TimeFormatting.swift"; sourceTree = "<group>"; };
+		D11CF08525D0A14900AFA232 /* Int-TimeFormatting-String-Numeric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int-TimeFormatting-String-Numeric.swift"; sourceTree = "<group>"; };
 		D1428A2D25D2FE25006B4BCD /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		D1428A3325D2FED8006B4BCD /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		D1428A3725D2FFDC006B4BCD /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
@@ -85,7 +85,7 @@
 		D11CF08825D0A14E00AFA232 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				D11CF08525D0A14900AFA232 /* Int-TimeFormatting.swift */,
+				D11CF08525D0A14900AFA232 /* Int-TimeFormatting-String-Numeric.swift */,
 				D1428A3725D2FFDC006B4BCD /* Storyboarded.swift */,
 				D1428A4325D49B7A006B4BCD /* Constraints.swift */,
 				D1525B8625D524310062FBB7 /* Alert.swift */,
@@ -219,7 +219,7 @@
 				D11CF07825CD766800AFA232 /* FriendViewController.swift in Sources */,
 				D1428A3825D2FFDC006B4BCD /* Storyboarded.swift in Sources */,
 				D1428A3425D2FED8006B4BCD /* MainCoordinator.swift in Sources */,
-				D11CF08625D0A14900AFA232 /* Int-TimeFormatting.swift in Sources */,
+				D11CF08625D0A14900AFA232 /* Int-TimeFormatting-String-Numeric.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

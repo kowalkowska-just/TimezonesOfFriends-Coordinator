@@ -13,6 +13,14 @@ class ViewController: UITableViewController, Storyboarded {
     
     weak var coordinator: MainCoordinator?
     
+    lazy var segmentedControl: UISegmentedControl = {
+        let sc = UISegmentedControl(items: ["Zone","Time"])
+        sc.translatesAutoresizingMaskIntoConstraints = false
+        sc.selectedSegmentIndex = 0
+        sc.addTarget(self, action: #selector(handleSegmentChange(_:)), for: .valueChanged)
+        return sc
+    }()
+    
     private var friends = [Friend]()
     var selectedFriend: Int? = nil
     
@@ -29,8 +37,10 @@ class ViewController: UITableViewController, Storyboarded {
     private func setupNavigationController() {
         title = "Friend Zone"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addFriend))
+        navigationController?.navigationBar.addSubview(segmentedControl)
+        segmentedControl.anchor(bottom: navigationController?.navigationBar.bottomAnchor, right: navigationController?.navigationBar.rightAnchor, paddingBottom: 15, paddingRight: 20)
+        segmentedControl.clipsToBounds = true
         navigationController?.navigationBar.prefersLargeTitles = true
-        
     }
     
     //MARK: - Selectors
@@ -45,6 +55,13 @@ class ViewController: UITableViewController, Storyboarded {
         coordinator?.configure(friend: friend)
     }
     
+    @objc private func handleSegmentChange(_ sender: UISegmentedControl) {
+        
+        print("DEBUG: Change value in segment control is called")
+        
+        tableView.reloadData()
+    }
+    
     //MARK: - TableView Delegate and DataSource
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -55,12 +72,15 @@ class ViewController: UITableViewController, Storyboarded {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let friend = friends[indexPath.row]
         cell.textLabel?.text = friend.name
+
+        let index = segmentedControl.selectedSegmentIndex
+
+        if index == 0 {
+             cell.detailTextLabel?.text = friend.timeZone.identifier
+        } else {
+            cell.detailTextLabel?.text = timeNumeric(from: friend)
+        }
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = friend.timeZone
-        dateFormatter.timeStyle = .short
-        
-        cell.detailTextLabel?.text = dateFormatter.string(from: Date())
         return cell
     }
     
